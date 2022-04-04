@@ -1,4 +1,4 @@
-# 📽 Simple video player made with WebCodecs / AudioWorklet
+# 📽 Simple video player made with WebCodecs
 
 <br>
 

@@ -4,7 +4,7 @@
 
 Simple video player demo made with WebCodecs / AudioWorklet. (No HTML5 videos!)  
 
-Visit https://example.com to see the live demo. 
+Visit https://webvideo-js.pages.dev/ to see the live demo. 
 
 Currently, Chrome 94+ is required. (Tested for Chrome 99 on Linux)  
 

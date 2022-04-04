@@ -1,0 +1,36 @@
+# media files
+*.mp3
+*.wav
+*.ogg
+*.mp4
+*.webm
+*.png
+*.jpg
+*.pgm
+*.ppm
+*.pcm
+
+# base
+work/
+.vscode/*
+log.txt
+assets/
+.cache/
+.clangd/
+memo.md
+public/*
+!public/assets/
+!public/assets/*
+!public/_headers
+!public/index.html
+
+# main
+.tmp/
+npm-debug.log
+lib/
+!lib/.keep
+dist/
+!dist/.keep
+node_modules/
+package-lock.json
+*.js.map

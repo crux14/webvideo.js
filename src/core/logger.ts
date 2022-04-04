@@ -44,7 +44,7 @@ function setLevel(level: LogLevel) {
 }
 
 function getLevel(): LogLevel {
-  if (self) {
+  if (typeof self !== 'undefined') {
     // @ts-ignore
     return self.__wv_global_loglevel;
   } else {

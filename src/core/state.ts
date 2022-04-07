@@ -85,8 +85,8 @@ export class WVPlayState {
 export class WVSharedFlag {
   #buf: Int32Array;
 
-  static readonly #TRUE = 1;
-  static readonly #FALSE = 0;
+  static readonly #TRUE: number = 1;
+  static readonly #FALSE: number = 0;
 
   static fromBuffer(buf: Int32Array): WVSharedFlag {
     const dummy = false;

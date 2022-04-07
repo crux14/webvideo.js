@@ -8,32 +8,32 @@ enum PlayBtnIcon {
   FONTAWESOME_PAUSE = '&#xf04c;',
 }
 
-function showLoader(loaderElem: HTMLElement) {
+function showLoader(loaderElem: HTMLElement): void {
   loaderElem.style.display = '';
 }
 
-function hideLoader(loaderElem: HTMLElement) {
+function hideLoader(loaderElem: HTMLElement): void {
   loaderElem.style.display = 'none';
 }
 
-function showPlayBtn(playBtnWrapperElem: HTMLElement) {
+function showPlayBtn(playBtnWrapperElem: HTMLElement): void {
   playBtnWrapperElem.style.display = '';
 }
 
-function hidePlayBtn(playBtnWrapperElem: HTMLElement) {
+function hidePlayBtn(playBtnWrapperElem: HTMLElement): void {
   playBtnWrapperElem.style.display = 'none';
 }
 
-function autohidePlayBtn(enable: boolean, playBtnWrapperElem: HTMLElement) {
+function autohidePlayBtn(enable: boolean, playBtnWrapperElem: HTMLElement): void {
   playBtnWrapperElem.style.opacity = enable ? '0' : '1';
 }
 
-function setPlayBtnIcon(icon: PlayBtnIcon, playBtnElem: HTMLElement) {
+function setPlayBtnIcon(icon: PlayBtnIcon, playBtnElem: HTMLElement): void {
   playBtnElem.innerHTML = icon;
 }
 
 window.addEventListener('beforeunload', (e) => {
-  function blockingSleep(waitMs: number) {
+  function blockingSleep(waitMs: number): void {
     const start = new Date().getTime();
     while (new Date().getTime() - start < waitMs) {}
   }
@@ -92,14 +92,14 @@ window.addEventListener('load', async () => {
     switch (player.playState()) {
       case WVPlayStateKind.PAUSED: {
         if (player.canPlay()) {
-          player.play();
+          void player.play();
           autohidePlayBtn(true, playBtnWrapperElem);
           setPlayBtnIcon(PlayBtnIcon.FONTAWESOME_PAUSE, playBtnElem);
         }
         break;
       }
       case WVPlayStateKind.PLAYING: {
-        player.pause();
+        void player.pause();
         autohidePlayBtn(false, playBtnWrapperElem);
         setPlayBtnIcon(PlayBtnIcon.FONTAWESOME_PLAY, playBtnElem);
         break;

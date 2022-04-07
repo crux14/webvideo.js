@@ -5,48 +5,14 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    sourceType: 'module',
-    parser: '@typescript-eslint/parser',
-    // project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
+    // project: ['./src/tsconfig.json'],
   },
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/ban-types': 'error',
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'default',
-        format: ['camelCase'],
-      },
-      {
-        selector: 'class',
-        format: ['camelCase'],
-      },
-      {
-        selector: 'typeAlias',
-        format: ['PascalCase'],
-      },
-      {
-        selector: 'interface',
-        format: ['PascalCase'],
-      },
-      {
-        selector: 'typeParameter',
-        format: ['PascalCase'],
-      },
-      {
-        selector: 'property',
-        format: null,
-      },
-      {
-        selector: 'variable',
-        format: ['camelCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
-      },
-    ],
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-member-accessibility': [
@@ -70,11 +36,12 @@ module.exports = {
         },
       },
     ],
+    // '@typescript-eslint/no-floating-promises': ['error'],
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-misused-new': 'error',
     '@typescript-eslint/no-namespace': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/no-parameter-properties': 'off',
     '@typescript-eslint/no-use-before-declare': 'off',
     // [TODO] this does not check unused expressions completely...
@@ -139,7 +106,7 @@ module.exports = {
     'no-cond-assign': 'error',
     'no-console': 'off',
     'no-debugger': 'error',
-    'no-empty': 'error',
+    'no-empty': 'off',
     'no-eval': 'error',
     'no-extra-semi': 'off',
     'no-fallthrough': 'off',
@@ -147,12 +114,8 @@ module.exports = {
     'no-irregular-whitespace': 'off',
     'no-multiple-empty-lines': 'off',
     'no-new-wrappers': 'error',
-    'no-shadow': [
-      'error',
-      {
-        hoist: 'all',
-      },
-    ],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     'no-throw-literal': 'error',
     'no-trailing-spaces': 'off',
     'no-undef-init': 'error',

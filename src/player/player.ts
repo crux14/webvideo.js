@@ -15,6 +15,7 @@ export type WVPlayerInitParams = {
 };
 
 export class WVPlayer {
+  /* eslint @typescript-eslint/typedef:0 */
   static readonly LogLevel = LogLevel;
 
   #initParams: WVPlayerInitParams;
@@ -50,7 +51,7 @@ export class WVPlayer {
     this.#videoDecoder = new WVVideoDecoderWorkerFront({
       maxVideoFrameLength: this.#maxVideoFrameLength,
     });
-    this.#audioDecoder = new WVAudioDecoderWorkerFront({});
+    this.#audioDecoder = new WVAudioDecoderWorkerFront();
   }
 
   async load(cb?: { onStart?: () => Promise<void>; onEnd?: () => Promise<void> }): Promise<void> {

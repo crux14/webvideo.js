@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node build.js debug",
     "watch": "node build.js debug watch",
+    "lint": "eslint ./src/**/*.ts",
     "publish": "node build.js production"
   },
   "keywords": [],

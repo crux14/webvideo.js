@@ -56,7 +56,7 @@ self.addEventListener('message', async (e) => {
           break;
         }
 
-        if (data.frame && data.frame.type() == 'video') {
+        if (data.frame && data.frame.type() === 'video') {
           while (workerState.sharedState!.videoBufferFull.load()) {
             Atomics.wait(workerState.sharedState!.videoBufferFull.buf(), 0, 1, 10 * 1000);
             if (workerState.sharedState!.videoDecoderShouldBeDead.load()) {

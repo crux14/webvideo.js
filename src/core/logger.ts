@@ -35,7 +35,7 @@ const GLOBAL_LOGLEVEL = {
   loglevel: LogLevel.WARN,
 };
 
-function setLevel(level: LogLevel) {
+function setLevel(level: LogLevel): void {
   if (typeof self !== 'undefined') {
     // @ts-ignore
     self.__wv_global_loglevel = level;
@@ -52,7 +52,7 @@ function getLevel(): LogLevel {
   }
 }
 
-function log(level: LogLevel, msg: string, header?: string) {
+function log(level: LogLevel, msg: string, header?: string): void {
   if (level < getLevel()) {
     return;
   }

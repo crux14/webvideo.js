@@ -43,26 +43,30 @@ function createAVCDescription(trackIdx: number, file: MP4Box.MP4File): Uint8Arra
     return undefined;
   }
 
-  let i,
-    size = 7;
-  for (i = 0; i < avccBox.SPS.length; i++) size += 2 + avccBox.SPS[i].length;
-  for (i = 0; i < avccBox.PPS.length; i++) size += 2 + avccBox.PPS[i].length;
+  let i;
+  let size = 7;
+  for (i = 0; i < avccBox.SPS.length; i++) {
+    size += 2 + avccBox.SPS[i].length;
+  }
+  for (i = 0; i < avccBox.PPS.length; i++) {
+    size += 2 + avccBox.PPS[i].length;
+  }
 
   let id = 0;
-  let data = new Uint8Array(size);
+  const data = new Uint8Array(size);
 
-  let writeUint8 = (value: any) => {
+  const writeUint8 = (value: any): any => {
     data.set([value], id);
     id++;
   };
-  let writeUint16 = (value: any) => {
-    let arr = new Uint8Array(1);
+  const writeUint16 = (value: any): any => {
+    const arr = new Uint8Array(1);
     arr[0] = value;
-    let buffer = new Uint8Array(arr.buffer);
+    const buffer = new Uint8Array(arr.buffer);
     data.set([buffer[1], buffer[0]], id);
     id += 2;
   };
-  let writeUint8Array = (value: any) => {
+  const writeUint8Array = (value: any): any => {
     data.set(value, id);
     id += value.length;
   };
@@ -85,7 +89,7 @@ function createAVCDescription(trackIdx: number, file: MP4Box.MP4File): Uint8Arra
     writeUint8Array(avccBox.PPS[i].nalu);
   }
 
-  if (id != size) {
+  if (id !== size) {
     logger.debug('Size mismatched', 'MP4BoxMediaDemuxer');
     return undefined;
   }
@@ -100,8 +104,8 @@ function createWVMediaStreamInfo(
 ): WVMediaStreamInfo {
   const streamType = track.type;
   let streamTypeStr: WVMediaStreamType = 'other';
-  let video: WVVideoStreamInfo | undefined = undefined;
-  let audio: WVAudioStreamInfo | undefined = undefined;
+  let video: WVVideoStreamInfo | undefined;
+  let audio: WVAudioStreamInfo | undefined;
   if (streamType === 'video') {
     streamTypeStr = 'video';
     video = {
@@ -205,7 +209,7 @@ export class MP4BoxMediaDemuxer implements WVMediaDemuxer {
     });
   }
 
-  destroy() {
+  destroy(): void {
     if (this.#info) {
       for (const track of this.#info.tracks) {
         // @ts-ignore

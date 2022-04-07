@@ -38,29 +38,29 @@ export class WVAudioRingBuffer {
     this.options.channels = init.options.channels ?? this.options.channels;
     this.options.bufLength = init.options.bufLength ?? this.options.bufLength;
 
-    if (this.bufSet.lockSab.byteLength != 4) {
+    if (this.bufSet.lockSab.byteLength !== 4) {
       throw Error('WVAudioRingBuffer Error: ByteLength of WVAudioRingBufferBufferSet.lockSab != 4');
     }
     this.lock = new Int32Array(this.bufSet.lockSab);
 
-    if (this.bufSet.idxSabs.length != 2) {
+    if (this.bufSet.idxSabs.length !== 2) {
       throw Error('WVAudioRingBuffer Error: Length of WVAudioRingBufferBufferSet.idxSabs != 2');
     }
     for (let i = 0; i < 2; i++) {
-      if (this.bufSet.idxSabs[i].byteLength != 4) {
+      if (this.bufSet.idxSabs[i].byteLength !== 4) {
         throw Error('WVAudioRingBuffer: ByteLength of WVAudioRingBufferBufferSet.idxSabs[] != 4');
       }
     }
     this.readIdx = new Uint32Array(this.bufSet.idxSabs[0]);
     this.writeIdx = new Uint32Array(this.bufSet.idxSabs[1]);
 
-    if (this.bufSet.bufSabs.length != this.options.channels) {
+    if (this.bufSet.bufSabs.length !== this.options.channels) {
       throw Error(
         'WVAudioRingBuffer Error: Length of WVAudioRingBufferBufferSet.bufSabs != WVAudioRingBufferOptions.channels'
       );
     }
     for (let ch = 0; ch < this.options.channels; ch++) {
-      if (this.bufSet.bufSabs[ch].byteLength != 4 * this.options.bufLength) {
+      if (this.bufSet.bufSabs[ch].byteLength !== 4 * this.options.bufLength) {
         throw Error(
           'WVAudioRingBuffer: ByteLength of WVAudioRingBufferBufferSet.bufSabs[] != WVAudioRingBufferOptions.bufLength'
         );

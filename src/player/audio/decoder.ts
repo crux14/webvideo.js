@@ -5,7 +5,7 @@ import type { WVMediaStreamInfo } from '../../media/media';
 export class WVAudioDecoderWorkerFront {
   #worker: Worker;
 
-  constructor(options: {}) {
+  constructor() {
     this.#worker = new Worker(AUDIO_DECODER_WORKER_PATH, {
       type: 'module',
       name: AUDIO_DECODER_WORKER_NAME,

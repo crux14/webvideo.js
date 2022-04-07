@@ -180,7 +180,7 @@ async function createDecoder(
   stream: WVMediaStreamInfo,
   output: (frame: DecodedFrame) => void
 ): Promise<VideoDecoder | AudioDecoder | null> {
-  if (stream.type == 'video') {
+  if (stream.type === 'video') {
     return await createVideoDecoder(stream, output);
   } else {
     return await createAudioDecoder(stream, output);
@@ -194,7 +194,7 @@ export class WebCodecsMediaDecoder implements WVMediaDecoder {
   #decoder: AudioDecoder | VideoDecoder | null = null;
   #decodedFrames: DecodedFrame[] = [];
 
-  #onFrame = (data: DecodedFrame): void => {
+  #onFrame: (d: DecodedFrame) => void = (data: DecodedFrame): void => {
     data.close();
   };
 

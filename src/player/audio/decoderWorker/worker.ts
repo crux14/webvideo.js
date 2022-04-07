@@ -98,7 +98,7 @@ self.addEventListener('message', async (e) => {
           break;
         }
         if (data.frame) {
-          if (data.frame.type() == 'audio') {
+          if (data.frame.type() === 'audio') {
             await pushSamples(workerState, data.frame);
             data.frame.close();
             continue;
